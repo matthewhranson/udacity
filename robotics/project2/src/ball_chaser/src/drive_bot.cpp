@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
-#include "simple_arm/DriveToTarget.h"
+#include "ball_chaser/DriveToTarget.h"
 
 
 // Global motor command publisher.  Note that this is modified in main().
