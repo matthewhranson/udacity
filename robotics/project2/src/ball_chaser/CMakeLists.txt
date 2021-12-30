@@ -142,7 +142,7 @@ add_executable(drive_bot src/drive_bot.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(drive_bot drive_bot_generate_dependencies_cpp)
+add_dependencies(drive_bot ball_chaser_generate_dependencies_cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(drive_bot ${catkin_LIBRARIES})
