@@ -49,7 +49,7 @@ void process_image_callback(const sensor_msgs::Image img) {
         // If a pixel is white, figure out where it is located
         if (img.data[i] == white_pixel) {
             float ball_position = (float)i / (float)img.step;
-            ROS_INFO_STREAM("Image step, width, and position are: %3.0f, %3.0f, %3.3f", img.step, img.width, ball_position);
+            ROS_INFO("Image step, width, and position are: %3.0f, %3.0f, %3.3f", img.step, img.width, ball_position);
 
             // Ball on left
             if (ball_position < .2) {
