@@ -33,15 +33,12 @@ bool drive_robot(float lin_x, float ang_z) {
 // This callback function continuously reads image data
 void process_image_callback(const sensor_msgs::Image img) {
 
-    // Define target color
+    // Define target color.  The encoding (img.encoding) is "rgb8".
     int white_pixel = 255;
 
     // Define wheel velocities.  The default is to stop when no ball is seen.
     float lin_x = 0;
     float ang_z = 0;
-
-    // Log the image encoding.  Should be "rgb8".
-    // ROS_INFO_STREAM("Image encoding is " + img.encoding);
 
     // Loop through each pixel in the image
     for (int i = 0; i < img.height * img.step; i++) {
@@ -98,6 +95,7 @@ int main(int argc, char** argv) {
     ros::Subscriber sub1 = n.subscribe("/camera/rgb/image_raw", 10, process_image_callback);
 
     // Handle ROS communication events
+    ROS_INFO("Ready to process images");
     ros::spin();
 
     return 0;
