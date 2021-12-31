@@ -21,9 +21,6 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& req, ball_chaser:
     // Publish the message with linear and angular velocities
     motor_command_publisher.publish(twist_msg);
 
-    // Wait 3 seconds to give the robot time to react
-    ros::Duration(3).sleep();
-
     // Publish a response message
     res.msg_feedback = "Robot wheel joint velocity set to linear x: " + std::to_string(req.linear_x)
         + " and angular z: " + std::to_string(req.angular_z);
