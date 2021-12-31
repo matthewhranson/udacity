@@ -33,8 +33,7 @@ bool drive_robot(float lin_x, float ang_z) {
 // This callback function continuously reads image data
 void process_image_callback(const sensor_msgs::Image img) {
 
-    // Define image width and target color
-    float width = img.width;
+    // Define target color
     int white_pixel = 255;
 
     // Define wheel velocities.  The default is to stop when no ball is seen.
@@ -49,7 +48,8 @@ void process_image_callback(const sensor_msgs::Image img) {
 
         // If a pixel is white, figure out where it is located
         if (img.data[i] == white_pixel) {
-            float ball_position = (float)i / width;
+            float ball_position = (float)i / (float)img.step;
+            ROS_INFO_STREAM("Image step, width, and position are: %3.0f, %3.0f, %3.3f", img.step, img.width, ball_position);
 
             // Ball on left
             if (ball_position < .2) {
