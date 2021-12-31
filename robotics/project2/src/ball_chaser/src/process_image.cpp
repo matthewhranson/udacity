@@ -46,10 +46,10 @@ void process_image_callback(const sensor_msgs::Image img) {
     // Loop through each pixel in the image
     for (int i = 0; i < img.height * img.step; i++) {
 
-        // If a pixel is white, figure out where it is located
+        // If a pixel is white, figure out where it is located.  For simplicity, this uses only the first pixel
+        // identified, which means that the robot will tend to chase the left side of the white ball.
         if (img.data[i] == white_pixel) {
             float ball_position = (float)(i % img.step) / (float)img.step;
-            ROS_INFO("Image step, width, and position are: %3.0i, %3.0f, %3.3f", img.step, img.width, ball_position);
 
             // Ball on left
             if (ball_position < .2) {
