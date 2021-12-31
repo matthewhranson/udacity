@@ -42,7 +42,7 @@ void process_image_callback(const sensor_msgs::Image img) {
     float ang_z = 0;
 
     // Log the image encoding.  Should be "rgb8".
-    ROS_INFO("Image encoding is " + img.encoding)
+    ROS_INFO("Image encoding is " + img.encoding);
 
     // Loop through each pixel in the image
     for (int i = 0; i < img.height * img.step; i++) {
