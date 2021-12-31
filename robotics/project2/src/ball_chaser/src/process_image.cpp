@@ -54,7 +54,7 @@ void process_image_callback(const sensor_msgs::Image img) {
             // Ball on left
             if (ball_position < .2) {
                 lin_x = 0;
-                ang_z = -.1;
+                ang_z = .1;
 
             // Ball straight ahead
             } else if (ball_position < .8) {
@@ -64,7 +64,7 @@ void process_image_callback(const sensor_msgs::Image img) {
             // Ball on right
             } else {
                 lin_x = 0;
-                ang_z = .1;
+                ang_z = -.1;
             }
 
             // Once a white pixel is found, skip remaining pixels
