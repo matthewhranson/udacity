@@ -55,10 +55,10 @@ void process_image_callback(const sensor_msgs::Image img) {
         float ball_position = avg_pixel / (float)img.step;
 
         // Generate wheel velocities
-        if (ball_position < .2) {  // Ball on left
+        if (ball_position < .3) {  // Ball on left
             lin_x = 0;
             ang_z = .1;
-        } else if (ball_position < .8) {  // Ball straight ahead
+        } else if (ball_position < .7) {  // Ball straight ahead
             lin_x = .1;
             ang_z = 0;
         } else {  // Ball on right
