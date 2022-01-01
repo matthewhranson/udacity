@@ -34,7 +34,7 @@ bool drive_robot(float lin_x, float ang_z) {
 void process_image_callback(const sensor_msgs::Image img) {
 
     // Create list to hold the locations of white pixels
-    list <int> white_pixels;
+    std::list<int> white_pixels;
 
     // Loop through each pixel in the image.  This works because the image encoding ('rgb8') has one byte per column.
     for (int i = 0; i < img.height; i++) {
