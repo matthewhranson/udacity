@@ -30,43 +30,45 @@ bool drive_robot(float lin_x, float ang_z) {
 }
 
 
-// This callback function continuously reads image data
+// This callback function looks for a white ball in image data and send wheel commands to follow it if present
 void process_image_callback(const sensor_msgs::Image img) {
 
-    // Define target color.  The encoding (img.encoding) is "rgb8".
-    int white_pixel = 255;
+    // Create list to hold the locations of white pixels
+    list <int> white_pixels;
 
-    // Define wheel velocities.  The default is to stop when no ball is seen.
-    float lin_x = 0;
-    float ang_z = 0;
-
-    // Loop through each pixel in the image
-    for (int i = 0; i < img.height * img.step; i++) {
-
-        // If a pixel is white, figure out where it is located.  For simplicity, this uses only the first pixel
-        // identified, which means that the robot will tend to chase the left side of the white ball.
-        if (img.data[i] == white_pixel) {
-            float ball_position = (float)(i % img.step) / (float)img.step;
-
-            // Ball on left
-            if (ball_position < .2) {
-                lin_x = 0;
-                ang_z = .1;
-
-            // Ball straight ahead
-            } else if (ball_position < .8) {
-                lin_x = .1;
-                ang_z = 0;
-
-            // Ball on right
-            } else {
-                lin_x = 0;
-                ang_z = -.1;
+    // Loop through each pixel in the image.  This works because the image encoding ('rgb8') has one byte per column.
+    for (int i = 0; i < img.height; i++) {
+        for (int j = 0; j < img.step; j++) {
+            if (img.data[i*img.step + j] == 255) {
+                white_pixels.push_back(j);
             }
-
-            // Once a white pixel is found, skip remaining pixels
-            break;
         }
+    }
+
+    // If white pixels were detected, then calculate wheel velocities
+    float lin_x;
+    float ang_z;
+    if (white_pixels.size() > 0) {
+
+        // Calculate ball position
+        float avg_pixel = (float)std::accumulate(white_pixels.begin(), white_pixels.end(), 0.0) / (float)white_pixels.size();
+        float ball_position = avg_pixel / (float)img.step;
+
+        // Generate wheel velocities
+        if (ball_position < .2) {  // Ball on left
+            lin_x = 0;
+            ang_z = .1;
+        } else if (ball_position < .8) {  // Ball straight ahead
+            lin_x = .1;
+            ang_z = 0;
+        } else {  // Ball on right
+            lin_x = 0;
+            ang_z = -.1;
+        }
+
+    } else {  // If no white pixels were detected, then stop
+        lin_x = 0;
+        ang_z = 0;
     }
 
     // Don't send a stop command if the robot is already stopped
