@@ -73,7 +73,7 @@
     <visual name='back_caster_visual'>
       <origin xyz="-0.2 0 -0.1" rpy="0 0 0"/>
       <geometry>
-        <sphere radius="0.5"/>
+        <sphere radius="0.05"/>
       </geometry>
     </visual>
 
