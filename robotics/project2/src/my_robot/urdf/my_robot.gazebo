@@ -2,7 +2,7 @@
 <robot>
 
   <!-- Color for chassis.  Can't specify in URDF due to OGRE incompatibility -->
-  <gazebo reference="chassis_visual">
+  <gazebo reference="chassis">
     <material>Gazebo/Orange</material>
   </gazebo>
 
