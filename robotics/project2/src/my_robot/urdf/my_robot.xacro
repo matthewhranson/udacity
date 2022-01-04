@@ -128,7 +128,7 @@
 
   <joint type="continuous" name="left_wheel_hinge">
 
-    <origin xyz="0.15 0.1 -0.075" rpy="0 0 0"/>
+    <origin xyz="0.15 0.075 -0.075" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -139,7 +139,7 @@
 
   <joint type="continuous" name="right_wheel_hinge">
 
-    <origin xyz="0.15 -0.1 -.075" rpy="0 0 0"/>
+    <origin xyz="0.15 -0.075 -.075" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -180,7 +180,7 @@
 
   <joint type="fixed" name="camera_joint">
 
-    <origin xyz="0.275 0 0" rpy="0 0 0"/>
+    <origin xyz="0.275 0 -.05" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>
@@ -217,7 +217,7 @@
 
   <joint type="fixed" name="hokuyo_joint">
 
-    <origin xyz="0.3 0 .1" rpy="0 0 0.2"/>
+    <origin xyz="0.225 0 .35" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>

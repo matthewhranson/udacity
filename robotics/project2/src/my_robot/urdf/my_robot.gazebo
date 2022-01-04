@@ -3,7 +3,7 @@
 
   <!-- Color for chassis.  Can't specify in URDF due to OGRE incompatibility -->
   <gazebo reference="chassis">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/Blue</material>
   </gazebo>
 
   <gazebo>
