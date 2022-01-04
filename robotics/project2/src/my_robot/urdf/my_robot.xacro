@@ -5,11 +5,11 @@
   <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
 
   <material name="greenish">
-      <color rgba="0 .8 0.2 1"/>
+      <color rgba="0.0 0.8 0.2 1"/>
   </material>
 
   <material name="dark">
-      <color rgba="0.05 .05 0.05 1"/>
+      <color rgba="0.05 0.05 0.05 1"/>
   </material>
 
   <link name="robot_footprint"></link>
@@ -50,16 +50,16 @@
     </visual>
 
     <collision name='tower_collision'>
-      <origin xyz=".3 0 .2" rpy="0 0 0"/>
+      <origin xyz=".25 0 .2" rpy="0 0 0"/>
       <geometry>
-        <box size=".3 .1 .2"/>
+        <box size=".1 .1 .2"/>
       </geometry>
     </collision>
 
     <visual name='tower_visual'>
-      <origin xyz=".3 0 .2" rpy="0 0 0"/>
+      <origin xyz=".25 0 .2" rpy="0 0 0"/>
       <geometry>
-        <box size=".3 .1 .2"/>
+        <box size=".1 .1 .2"/>
       </geometry>
       <material name="greenish"/>
     </visual>
@@ -95,14 +95,14 @@
     <collision name='left_wheel_collision'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".2" length=".075"/>
+        <cylinder radius=".075" length=".025"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_visual'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".2" length=".075"/>
+        <cylinder radius=".075" length=".025"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -124,14 +124,14 @@
     <collision name='right_wheel_collision'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".2" length=".075"/>
+        <cylinder radius=".075" length=".025"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".2" length=".075"/>
+        <cylinder radius=".075" length=".025"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -140,7 +140,7 @@
 
   <joint type="continuous" name="left_wheel_hinge">
 
-    <origin xyz="0.15 0.1 0" rpy="0 0 0"/>
+    <origin xyz="0.15 0.1 -0.075" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -151,7 +151,7 @@
 
   <joint type="continuous" name="right_wheel_hinge">
 
-    <origin xyz="0.15 -0.1 0" rpy="0 0 0"/>
+    <origin xyz="0.15 -0.1 -.075" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -192,7 +192,7 @@
 
   <joint type="fixed" name="camera_joint">
 
-    <origin xyz="0.475 0 .2" rpy="0 0 0"/>
+    <origin xyz="0.275 0 .2" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>
@@ -229,7 +229,7 @@
 
   <joint type="fixed" name="hokuyo_joint">
 
-    <origin xyz="0.5 0 .1" rpy="0 0 0"/>
+    <origin xyz="0.3 0 .1" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>
