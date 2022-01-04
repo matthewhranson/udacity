@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot>
 
-  <!-- Color for chassis.  Can't specify in URDF due to OGRE incompatibility -->
+  <!-- Color for chassis.  A URDF materials tag wouldn't show up in Gazebo due to OGRE incompatibility. -->
   <gazebo reference="chassis">
     <material>Gazebo/Blue</material>
   </gazebo>
