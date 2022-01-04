@@ -46,18 +46,17 @@
       <geometry>
         <box size=".5 .1 .2"/>
       </geometry>
-      <material name="greenish"/>
     </visual>
 
     <collision name='tower_collision'>
-      <origin xyz=".25 0 .2" rpy="0 0 0"/>
+      <origin xyz=".2 0 .2" rpy="0 0 0"/>
       <geometry>
         <box size=".1 .1 .2"/>
       </geometry>
     </collision>
 
     <visual name='tower_visual'>
-      <origin xyz=".25 0 .2" rpy="0 0 0"/>
+      <origin xyz=".2 0 .2" rpy="0 0 0"/>
       <geometry>
         <box size=".1 .1 .2"/>
       </geometry>
@@ -67,14 +66,14 @@
     <collision name='back_caster_collision'>
       <origin xyz="-0.2 0 -0.1" rpy="0 0 0"/>
       <geometry>
-        <sphere radius="0.0999"/>
+        <sphere radius="0.0499"/>
       </geometry>
     </collision>
 
     <visual name='back_caster_visual'>
       <origin xyz="-0.2 0 -0.1" rpy="0 0 0"/>
       <geometry>
-        <sphere radius="0.1"/>
+        <sphere radius="0.5"/>
       </geometry>
     </visual>
 
@@ -192,7 +191,7 @@
 
   <joint type="fixed" name="camera_joint">
 
-    <origin xyz="0.275 0 .2" rpy="0 0 0"/>
+    <origin xyz="0.275 0 0" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>
@@ -229,7 +228,7 @@
 
   <joint type="fixed" name="hokuyo_joint">
 
-    <origin xyz="0.3 0 .1" rpy="0 0 0"/>
+    <origin xyz="0.3 0 .1" rpy="0 0 0.2"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0"/>
